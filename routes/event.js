@@ -1,9 +1,9 @@
 const eventReviewController = require("../controllers/event");
 
 module.exports = app => {
-    app.get("/api/eventreviews", eventReviewController.findAll);
-    app.post("/api/eventreviews", eventReviewController.create);
-    app.get("/api/eventreviews/:id", eventReviewController.findOne);
-    app.patch("/api/eventreviews/:id", eventReviewController.update);
-    app.delete("/api/eventreviews/:id", eventReviewController.delete)
+    app.get("/eventreviews", eventReviewController.findAll);
+    app.post("/eventreviews", eventReviewController.create);
+    app.get("/eventreviews/:id", eventReviewController.findOne);
+    app.patch("/eventreviews/:id", eventReviewController.update);
+    app.delete("/eventreviews/:id", eventReviewController.delete)
 }
