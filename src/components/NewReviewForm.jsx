@@ -27,8 +27,6 @@ const NewReviewForm=({allReviews, setAllReviews})=>{
             .then(res=>{
                 console.log(res);
                 if (res && res.data){
-
-                
                 setAllReviews([...allReviews, res.data]);
                 navigate("/reviews/")
                 } else {
@@ -37,7 +35,7 @@ const NewReviewForm=({allReviews, setAllReviews})=>{
             })
             .catch(err=>{
                 console.error("An error occurred while making the POST request:", err)
-                console.log(err.response.data);
+                console.log(err);
                 const errArray = []
                 for (const key of Object.keys(err.response.data.errors)){
                     errArray.push(err.response.data.errors[key].message)

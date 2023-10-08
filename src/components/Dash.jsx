@@ -13,11 +13,24 @@ const Dash=({allReviews, setAllReviews})=>{
             })
     }
 
+    const editReview = () =>{
+        axios.patch('http://localhost:8000/eventreviews/' + id)
+            .then((res)=>{
+                console.log(res);
+                console.log(res.data);
+                navigate(`/reviews/edit/${res.data._id}`);
+            })
+
+            .catch((err)=>{
+                console.log(err)
+            });
+    };
+
 
     return(
         <>
             <h1>Reviews</h1>
-            <button>Log Out</button>
+            {/* <button>Log Out</button> */}
             <table>
                 <tbody>
                 <tr>
@@ -33,7 +46,7 @@ const Dash=({allReviews, setAllReviews})=>{
                     allReviews.map( review => {
                         return(
                             <tr key={review._id}>
-                                <td><button>View</button></td>
+                                <td><Link to ={`/reviews/${review._id}`}><button>View</button></Link></td>
                                 <td>{review.artist}</td>
                                 <td>{review.venue}</td>
                                 <td>{review.date}</td>
