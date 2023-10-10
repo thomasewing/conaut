@@ -10,6 +10,7 @@ const Home=(props)=>{
     const [allReviews, setAllReviews] = useState([]);
 
     useEffect(()=>{
+        console.log("usEffect running");
         axios.get("http://localhost:8000/eventreviews")
             .then(res => setAllReviews(res.data))
             .catch(err=>console.log(err))
@@ -19,8 +20,8 @@ const Home=(props)=>{
         <Routes>
             <Route path={"/"} element={<Dash allReviews={allReviews} setAllReviews={setAllReviews}/>} />
             <Route path={"/new"} element={<NewReviewForm allReviews={allReviews} setAllReviews={setAllReviews}/>}/>
-            <Route path="/:id" element={<OneReview allReviews={allReviews} setAllReviews={setAllReviews}/>}/>
-            <Route path="/edit/:id" element={<Edit allReviews={allReviews} setAllReviews={setAllReviews}/>}/>
+            <Route path={"/:id"} element={<OneReview allReviews={allReviews} setAllReviews={setAllReviews}/>}/>
+            <Route path={"/edit/:id"} element={<Edit allReviews={allReviews} setAllReviews={setAllReviews}/>}/>
         </Routes>
     );
 }

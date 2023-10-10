@@ -2,7 +2,7 @@ import React, {useEffect,useState} from 'react'
 import axios from 'axios';
 import {useNavigate, useParams} from 'react-router-dom';
 
-const Update = (props)=>{
+const Edit = ({allReviews,setAllReviews})=>{
     const{id} = useParams();
     const [artist, setArtist]=useState("");
     const [venue, setVenue]=useState("");
@@ -13,6 +13,7 @@ const Update = (props)=>{
 
     const navigate = useNavigate();
     const [errors, setErrors] = useState([]);
+
     
 
     useEffect(()=>{
@@ -44,8 +45,17 @@ const Update = (props)=>{
 
             .then(res=>{
                 console.log(res);
+                console.log(allReviews);
+                setAllReviews(allReviews.map(review=>{
+                    if (review._id===id){
+                        return res.data
+                    }else{
+                        return review
+                    }
+                }))
                 navigate('/reviews');
             })
+
             .catch(err=> {
                 // console.log(err.response.data);
                 console.log("error here", err);
@@ -132,4 +142,4 @@ const Update = (props)=>{
     )
 }
 
-export default Update;
+export default Edit;
