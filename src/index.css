@@ -14,6 +14,21 @@
   -webkit-text-size-adjust: 100%;
 }
 
+.container{
+  color:lightslategray;
+  background-color:lightsteelblue;
+  border: 2px;
+  border-color: #242424;
+  border-style: solid;
+  table-layout: auto;
+  justify-content: left;
+  border-radius: 15%;
+}
+
+.table{
+  table-layout: auto;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
